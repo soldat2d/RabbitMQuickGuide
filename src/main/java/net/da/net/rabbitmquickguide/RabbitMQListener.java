@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class RabbitMQListener {
 
-    private final Logger logger = LoggerFactory.getLogger(SampleController.class);
+    private final Logger logger = LoggerFactory.getLogger(RabbitMQListener.class);
 
-    @RabbitListener(queues = "myQueue")
+    @RabbitListener(queues = {"myQueue1"})
     public void processMyQueue(String message) {
-        logger.info("Received first from myQueue : {}", message);
+        logger.info("Received from myQueue1 : {}", message);
     }
 
-    @RabbitListener(queues = "myQueue")
+    @RabbitListener(queues = {"myQueue2"})
     public void processMyQueue2(String message) {
-        logger.info("Received second from myQueue : {}", message);
+        logger.info("Received from myQueue2 : {}", message);
     }
 }
